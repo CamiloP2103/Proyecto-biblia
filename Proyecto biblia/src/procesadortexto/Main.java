@@ -38,14 +38,14 @@ public class Main {
         int totalGeneral = 0;
 
         do {
-            System.out.println("\n=== MENÚ PRINCIPAL ===");
+            System.out.println("\n=== MENU PRINCIPAL ===");
             System.out.println("1. Buscar palabras por letra inicial (texto completo)");
-            System.out.println("2. Mostrar estadísticas generales");
-            System.out.println("3. Contar palabras en un párrafo específico");
-            System.out.println("4. Mostrar todos los párrafos con conteo de palabras");
-            System.out.println("5. Buscar palabras por letra en párrafo específico");
+            System.out.println("2. Mostrar estadisticas generales");
+            System.out.println("3. Contar palabras en un parrafo especifico");
+            System.out.println("4. Mostrar todos los parrafos con conteo de palabras");
+            System.out.println("5. Buscar palabras por letra en parrafo especifico");
             System.out.println("6. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
             
             opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar buffer
@@ -76,7 +76,7 @@ public class Main {
                     break;
                     
                 default:
-                    System.out.println("Opción no válida. Intente nuevamente.");
+                    System.out.println("Opcion no valida. Intente nuevamente.");
             }
         } while (opcion != 6);
         
@@ -91,28 +91,28 @@ public class Main {
     }
 
     private static void mostrarEstadisticasGenerales(int totalGeneral) {
-        System.out.println("\nESTADÍSTICAS GENERALES");
+        System.out.println("\nESTADiSTICAS GENERALES");
         System.out.println("Total de palabras: " + contenidoLimpio.split(" ").length);
-        System.out.println("Total de párrafos: " + parrafos.length);
+        System.out.println("Total de parrafos: " + parrafos.length);
     }
 
     private static void contarPalabrasParrafoEspecifico(Scanner scanner) {
-        System.out.println("\nSeleccione un párrafo (1-" + parrafos.length + "): ");
+        System.out.println("\nSeleccione un parrafo (1-" + parrafos.length + "): ");
         int numParrafo = scanner.nextInt();
         scanner.nextLine(); // Limpiar buffer
         
         if (numParrafo < 1 || numParrafo > parrafos.length) {
-            System.out.println("Número de párrafo inválido!");
+            System.out.println("Numero de parrafo invalido!");
             return;
         }
         
         String parrafoLimpio = procesador.limpiarTexto(parrafos[numParrafo-1]);
         int totalPalabras = parrafoLimpio.split(" ").length;
         
-        System.out.println("\nPárrafo " + numParrafo + ":");
+        System.out.println("\nParrafo " + numParrafo + ":");
         System.out.println("Total de palabras: " + totalPalabras);
         
-        // Mostrar un extracto del párrafo (primeras 50 palabras)
+        // Mostrar un extracto del parrafo (primeras 50 palabras)
         String[] palabras = parrafoLimpio.split(" ");
         System.out.print("Extracto: ");
         for (int i = 0; i < Math.min(50, palabras.length); i++) {
@@ -123,11 +123,11 @@ public class Main {
     }
 
     private static void mostrarTodosParrafosConConteo() {
-        System.out.println("\nCONTEO DE PALABRAS POR PÁRRAFO");
+        System.out.println("\nCONTEO DE PALABRAS POR PaRRAFO");
         for (int i = 0; i < parrafos.length; i++) {
             String parrafoLimpio = procesador.limpiarTexto(parrafos[i]);
             int totalPalabras = parrafoLimpio.split(" ").length;
-            System.out.printf("Párrafo %4d: %6d palabras%n", (i+1), totalPalabras);
+            System.out.printf("Parrafo %4d: %6d palabras%n", (i+1), totalPalabras);
         }
     }
 
@@ -143,12 +143,12 @@ public class Main {
     }
     
     private static void contarPalabrasPorLetraEnParrafo(Scanner scanner) {
-        System.out.println("\nSeleccione un párrafo (1-" + parrafos.length + "): ");
+        System.out.println("\nSeleccione un parrafo (1-" + parrafos.length + "): ");
         int numParrafo = scanner.nextInt();
         scanner.nextLine(); // Limpiar buffer
 
         if (numParrafo < 1 || numParrafo > parrafos.length) {
-            System.out.println("Número de párrafo inválido!");
+            System.out.println("Numero de parrafo invalido!");
             return;
         }
 
@@ -158,7 +158,7 @@ public class Main {
         int cantidad = procesador.contarPalabrasConLetraEnParrafo(parrafos[numParrafo-1], letra);
         int totalPalabras = procesador.limpiarTexto(parrafos[numParrafo-1]).split(" ").length;
 
-        System.out.println("\nResultados para el Párrafo " + numParrafo + ":");
+        System.out.println("\nResultados para el Parrafo " + numParrafo + ":");
         System.out.println("Total de palabras: " + totalPalabras);
         System.out.println("Palabras que empiezan con '" + letra + "': " + cantidad);
         System.out.printf("Porcentaje: %.2f%%\n", (cantidad * 100.0 / totalPalabras));
