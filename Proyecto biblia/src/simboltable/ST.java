@@ -6,8 +6,14 @@ package simboltable;
 
 import java.util.Iterator;
 /**
- *
- * @author priet
+ * La clase ST implementa una tabla de símbolos genérica basada en una lista enlazada.
+ * Permite almacenar pares clave-valor y realizar operaciones básicas de búsqueda e inserción.
+ * 
+ * @author Rodrigo
+ * @author Juan
+ * @author Camilo
+ * @param <Key> El tipo de dato para las claves.
+ * @param <Value> El tipo de dato para los valores.
  */
 public class ST<Key, Value> implements Iterable<Key>{
     private Node first;
@@ -25,6 +31,12 @@ public class ST<Key, Value> implements Iterable<Key>{
         }
     }
     
+    /**
+     * Obtiene el valor asociado a una clave.
+     * 
+     * @param key La clave a buscar.
+     * @return El valor asociado o null si no existe.
+     */
     public Value get(Key key){
         for(Node x = first;x != null; x = x.next)
             if (key.equals(x.key))
@@ -32,6 +44,12 @@ public class ST<Key, Value> implements Iterable<Key>{
         return null;
     }
     
+    /**
+     * Inserta o actualiza un par clave-valor en la tabla.
+     * 
+     * @param key La clave a insertar/actualizar.
+     * @param value El valor a asociar.
+     */
     public void put(Key key, Value value){
         for (Node x = first; x != null; x = x.next)
             if (key.equals(x.key)){
@@ -42,24 +60,50 @@ public class ST<Key, Value> implements Iterable<Key>{
         count++;
     }
     
+    /**
+     * Elimina una clave y su valor asociado de la tabla.
+     * 
+     * @param key La clave a eliminar.
+     */
     public void delete(Key key){
         put(key, null);
         count--;
     }
     
+    /**
+     * Verifica si una clave existe en la tabla.
+     * 
+     * @param key La clave a buscar.
+     * @return true si la clave existe, false en caso contrario.
+     */
     public boolean contains(Key key){
         return get(key) != null;
     }
     
+    /**
+     * Verifica si la tabla está vacía.
+     * 
+     * @return true si la tabla está vacía, false en caso contrario.
+     */
     public boolean isEmpty(){
         //return first == null;
         return size() == 0;
     }
     
+    /**
+     * Devuelve el número de elementos en la tabla.
+     * 
+     * @return El número de elementos.
+     */
     public int size(){
         return count;
     }
     
+    /**
+     * Proporciona un iterador para recorrer las claves de la tabla.
+     * 
+     * @return Un iterador para las claves.
+     */
     @Override
     public Iterator<Key> iterator() {
         return new LinkedListIterator();

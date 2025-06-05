@@ -8,8 +8,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- *
- * @author priet
+ * La clase Main contiene el punto de entrada del programa y maneja la interfaz de usuario.
+ * Proporciona un menú interactivo para analizar y procesar textos.
+ * 
+ * @author Rodrigo
+ * @author Juan
+ * @author Camilo
  */
 public class Main {
     private static final String RUTA_BIBLIA = "textos/Bible.txt";
